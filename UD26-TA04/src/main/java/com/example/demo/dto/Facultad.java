@@ -2,6 +2,8 @@ package com.example.demo.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,11 +21,11 @@ public class Facultad {
 	private String nombre;
 	
 	@OneToMany
-	@JoinColumn(name="codigo")
+	@JoinColumn(name="codigo_facultad")
 	private List <Equipo> equipo;
 	
 	@OneToMany
-	@JoinColumn(name="codigo")
+	@JoinColumn(name="codigo_facultad")
 	private List <Investigador> investigador;
 	
 	//Constructores

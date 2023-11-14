@@ -22,8 +22,8 @@ public class Investigador {
 	private String nom_apels;
 	
 	@ManyToOne
-	@JoinColumn(name="dni")
-	private List<Facultad> facultad;
+	@JoinColumn(name="codigo_facultad")
+	private Facultad facultad;
 	
 	@OneToMany
 	@JoinColumn(name="dni")
@@ -34,7 +34,7 @@ public class Investigador {
 		
 	}
 
-	public Investigador(String dni, String nom_apels, List<Facultad> facultad, List<Reserva> reserva) {
+	public Investigador(String dni, String nom_apels, Facultad facultad, List<Reserva> reserva) {
 		super();
 		this.dni = dni;
 		this.nom_apels = nom_apels;
@@ -58,15 +58,15 @@ public class Investigador {
 	public void setNom_apels(String nom_apels) {
 		this.nom_apels = nom_apels;
 	}
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
-	public List<Facultad> getFacultad() {
+	
+	public Facultad getFacultad() {
 		return facultad;
 	}
 
-	public void setFacultad(List<Facultad> facultad) {
+	public void setFacultad(Facultad facultad) {
 		this.facultad = facultad;
 	}
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reserva")
 	public List<Reserva> getReserva() {
